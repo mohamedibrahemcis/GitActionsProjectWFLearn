@@ -1,23 +1,23 @@
-name: Continous Integration and Deployment WF Test
+name: .NET
 
-On: 
-  Push:
-   Branches:
-     - master
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-Jobs:
-  Build:
-    run-on: ubuntu-Latest
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
     steps:
-      name: Check out repository code
-           uses: actions/checkout@v3
-      name: Setup Dotnet 
-           uses: actions/setup-dotnet@v3
-             with:
-               dotnet-version: '6.0.0'
-      name: Restore Dependances 
-            run: dotnet restore 
-      name: Build Solution
-            run: dotnet build
-            
-      
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
