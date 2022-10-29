@@ -9,7 +9,7 @@ Jobs:
   Build:
     run-on: ubuntu-Latest
     steps:
-      name: Check out the Code
+      name: Check out repository code
            uses: actions/checkout@v3
       name: Setup Dotnet 
            uses: actions/setup-dotnet@v3
